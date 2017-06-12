@@ -1,3 +1,29 @@
+### Example of use in node repl:
+
+```
+adc@adc-mbpr ~/m/bank-tech-test> node                                  
+> BANKAPP = require('./init.js');
+{ init: [Function: init],
+  createAccount: [Function: createAccount],
+  printStatement: [Function: printStatement] }
+> BANKAPP.init();
+undefined
+> BANKAPP.account.processTransaction(1000);
+undefined
+> BANKAPP.account.processTransaction(2000);
+undefined
+> BANKAPP.account.processTransaction(-500);
+undefined
+> BANKAPP.printStatement();
+date || credit || debit || balance
+12/05/2017 || || 500.00 || 2500.00
+12/05/2017 || 2000.00 || || 3000.00
+12/05/2017 || 1000.00 || || 1000.00
+undefined
+```
+
+
+
 ### User Stories:
 
 ```
