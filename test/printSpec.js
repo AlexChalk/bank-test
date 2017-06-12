@@ -43,6 +43,16 @@ describe('BANKAPP.printStatement', function() {
     expect(console.log.getCall(1).args[0]).to.include('|| 500');
   });
 
+  it('prints credits in credit column', function() {
+    BANKAPP.printStatement();
+    expect(console.log.getCall(2).args[0]).to.include('2000 || || ');
+  });
+
+  it('prints debits in debit column', function() {
+    BANKAPP.printStatement();
+    expect(console.log.getCall(1).args[0]).to.include('|| || 500');
+  });
+
   it('prints balance after each transaction', function() {
     BANKAPP.printStatement();
     expect(console.log.getCall(1).args[0]).to.include('2500');
