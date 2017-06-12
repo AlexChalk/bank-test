@@ -2,6 +2,13 @@
   'use strict';
 
   var processTransaction = function(amount) {
+    if (typeof amount !== 'number') {
+      throw { 
+        name: 'TypeError',
+        message: 'This function takes a number'
+      };
+    }
+
     var that = this;
     var newTransaction = function(amount) {
       return {
@@ -12,13 +19,6 @@
     };
 
     this.balance += amount;
-
-    if (typeof amount !== 'number') {
-      throw { 
-        name: 'TypeError',
-        message: 'This function takes a number'
-      };
-    }
 
     this.history.push(newTransaction(amount));
   };
