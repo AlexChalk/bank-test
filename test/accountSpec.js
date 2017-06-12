@@ -13,7 +13,7 @@ describe('BANKAPP.account', function() {
     beforeEach(function() {
       BANKAPP.init();
       account = BANKAPP.account;
-      clock = sinon.useFakeTimers();
+      clock = sinon.useFakeTimers(new Date(2012,1,14).getTime());
     });
     afterEach(function() {
       clock.restore();
@@ -25,7 +25,7 @@ describe('BANKAPP.account', function() {
 
     it('pushes object to account.history that knows the transaction date', function() {
       account.processTransaction(1000);
-      expect(account.history[0].timestamp).to.equal(Date.now);
+      expect(account.history[0].timestamp.getTime()).to.equal(new Date().getTime());
     });
 
     it('pushes object to account.history that knows the transaction amount', function() {

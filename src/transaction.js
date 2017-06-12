@@ -4,7 +4,7 @@
   var newTransaction = function(amount) {
     this.balance += amount;
     return {
-      timestamp:  Date.now,
+      timestamp: new Date(),
       amount:  amount,
       balance: this.balance
     };
