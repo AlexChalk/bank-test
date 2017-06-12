@@ -15,13 +15,15 @@
     return date.getDate() + '/' + formatMonth(date) + '/' + date.getFullYear();
   };
     
-  Number.prototype.addZeros = function(){
-    if (this === Math.round(this)) {
-      return this + '.00';
-    } else {
-      return this;
-    }
-  };
+  if (typeof Number.prototype.addZeros !== 'function') {
+    Number.prototype.addZeros = function(){
+      if (this === Math.round(this)) {
+        return this + '.00';
+      } else {
+        return this;
+      }
+    };
+  }
 
   var formatAsDebitOrCredit = function(amount){
     if (amount < 0) {
