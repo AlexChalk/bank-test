@@ -29,8 +29,8 @@ describe('BANKAPP.account', function() {
     });
 
     it('pushes object to account.history that knows the transaction amount', function() {
-      account.processTransaction(2000);
-      expect(account.history[0].amount).to.equal(2000);
+      account.processTransaction(-2000);
+      expect(account.history[0].amount).to.equal(-2000);
     });
 
     it('pushes object to account.history that knows the new account balance', function() {
