@@ -2,23 +2,13 @@
   'use strict';
 
   var createAccount = function() {
-
     return {
       balance: 0,
       history: [],
-      newTransaction: require('./transaction.js'),
-      processTransaction: function(amount) {
-
-        if (typeof amount !== 'number') {
-          throw { 
-            name: 'TypeError',
-            message: 'This function takes a number'
-          };
-        }
-
-        this.history.push(this.newTransaction(amount));
-      }
+      printStatement: require('./print.js'),
+      processTransaction: require('./transaction.js'),
     };
   };
+
   module.exports = createAccount;
 }());

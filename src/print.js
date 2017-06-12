@@ -2,7 +2,7 @@
   'use strict';
   var header = 'date || credit || debit || balance';
 
-  var month = function(date) {
+  var formatMonth = function(date) {
     var currentMonth = date.getMonth();
     if (currentMonth < 10) {
       return '0' + currentMonth;
@@ -12,7 +12,7 @@
   };
 
   var formatDate = function(date){
-    return date.getDate() + '/' + month(date) + '/' + date.getFullYear();
+    return date.getDate() + '/' + formatMonth(date) + '/' + date.getFullYear();
   };
     
   Number.prototype.addZeros = function(){
@@ -23,7 +23,7 @@
     }
   };
 
-  var formatAmount = function(amount){
+  var formatAsDebitOrCredit = function(amount){
     if (amount < 0) {
       return '|| ' + Math.abs(amount).addZeros();
     } else {
@@ -33,8 +33,8 @@
 
   var printStatement = function() {
     console.log(header);
-    this.account.history.reverse().forEach(function(transaction) {
-      console.log(formatDate(transaction.timestamp) + ' || ' + formatAmount(transaction.amount) + ' || ' + transaction.balance.addZeros());
+    this.history.reverse().forEach(function(transaction) {
+      console.log(formatDate(transaction.timestamp) + ' || ' + formatAsDebitOrCredit(transaction.amount) + ' || ' + transaction.balance.addZeros());
     });
   };
   module.exports = printStatement;

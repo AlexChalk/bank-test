@@ -10,13 +10,12 @@ describe('BANKAPP.printStatement', function() {
   before(function() {
     header = 'date || credit || debit || balance';
     sinon.spy(console, 'log');
-    BANKAPP.init();
-    account = BANKAPP.account;
+    account = BANKAPP.createAccount();
     clock = sinon.useFakeTimers(new Date(2012,1,10).getTime());
     account.processTransaction(1000); clock.tick(1000 * 60 * 60 * 72);
     account.processTransaction(2000); clock.tick(1000 * 60 * 60 * 24);
     account.processTransaction(-500);
-    BANKAPP.printStatement();
+    account.printStatement();
   });
   after(function() {
     clock.restore();
@@ -30,11 +29,7 @@ describe('BANKAPP.printStatement', function() {
     expect(console.log.getCall(1).args[0]).to.include('14/01/2012');
   });
 
-  it('prints amounts with two decimal places', function() {
-    expect(console.log.getCall(3).args[0]).to.include('1000.00');
-  });
-
-  it('prints amount of transactions', function() {
+  it('prints amount of transactions to two decimal places', function() {
     expect(console.log.getCall(3).args[0]).to.include('1000.00');
   });
 

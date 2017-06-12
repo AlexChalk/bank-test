@@ -11,8 +11,7 @@ describe('BANKAPP.account', function() {
     var clock;
     var account;
     beforeEach(function() {
-      BANKAPP.init();
-      account = BANKAPP.account;
+      account = BANKAPP.createAccount();
       clock = sinon.useFakeTimers(new Date(2012,1,14).getTime());
     });
     afterEach(function() {
