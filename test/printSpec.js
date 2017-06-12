@@ -38,6 +38,11 @@ describe('BANKAPP.printStatement', function() {
     expect(console.log.getCall(3).args[0]).to.include('1000');
   });
 
+  it('always prints amount as positive number', function() {
+    BANKAPP.printStatement();
+    expect(console.log.getCall(1).args[0]).to.include('|| 500');
+  });
+
   it('prints balance after each transaction', function() {
     BANKAPP.printStatement();
     expect(console.log.getCall(1).args[0]).to.include('2500');
