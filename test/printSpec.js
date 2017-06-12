@@ -14,8 +14,10 @@ describe('BANKAPP.printStatement', function() {
   beforeEach(function() {
     BANKAPP.init();
     account = BANKAPP.account;
-    clock = sinon.useFakeTimers(new Date(2012,1,14).getTime());
-    account.processTransaction(2000); account.processTransaction(-1000); account.processTransaction(3000);
+    clock = sinon.useFakeTimers(new Date(2012,1,10).getTime());
+    account.processTransaction(1000); clock.tick(1000 * 60 * 60 * 72);
+    account.processTransaction(2000); clock.tick(1000 * 60 * 60 * 24);
+    account.processTransaction(-500);
   });
   after(function() {
     clock.restore();
@@ -33,7 +35,12 @@ describe('BANKAPP.printStatement', function() {
 
   it('prints amount of transactions', function() {
     BANKAPP.printStatement();
-    expect(console.log.getCall(1).args[0]).to.include('3000');
+    expect(console.log.getCall(3).args[0]).to.include('1000');
+  });
+
+  it('prints balance after each transaction', function() {
+    BANKAPP.printStatement();
+    expect(console.log.getCall(1).args[0]).to.include('2500');
   });
 });
 

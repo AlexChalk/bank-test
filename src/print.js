@@ -19,7 +19,7 @@
   var printStatement = function() {
     console.log(header);
     this.account.history.reverse().forEach(function(transaction) {
-      console.log(formatDate(transaction.timestamp) + '||' + transaction.amount);
+      console.log(formatDate(transaction.timestamp) + ' || ' + transaction.amount + ' || ' + transaction.balance);
     });
   };
   module.exports = printStatement;
