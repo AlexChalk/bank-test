@@ -1,13 +1,18 @@
 var BANKAPP = require('../init.js');
 
-BANKAPP.createAccount = function() {
-  var initialBalance = 0;
+var BANKAPP = {
+  init: function() { 
+    this.account = BANKAPP.createAccount(); 
+  },
 
-  return {
-    history: [],
-    processTransaction: function(paramsHash){}
-  };
+  createAccount: function() {
+    var initialBalance = 0;
+
+    return {
+      history: [],
+      processTransaction: function(paramsHash){}
+    };
+  }
 };
-
 
 module.exports = BANKAPP;

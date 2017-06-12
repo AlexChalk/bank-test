@@ -4,7 +4,7 @@ var sinonChai = require('sinon-chai');
 var expect = chai.expect;
 chai.use(sinonChai);
 
-var BANKAPP = require('../src/account.js');
+var BANKAPP = require('../init.js');
 
 describe('BANKAPP.initialize', function() {
   it('creates a new account', function() {
