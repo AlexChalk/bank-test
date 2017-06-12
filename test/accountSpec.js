@@ -22,9 +22,14 @@ describe('BANKAPP', function() {
     });
 
 
-    it('populates account.history with a datestamped object', function() {
+    it('pushes object to account.history that knows the transaction date', function() {
       BANKAPP.account.processTransaction(1000);
       expect(BANKAPP.account.history[0].timestamp).to.equal(Date.now);
+    });
+
+    it('pushes object to account.history that knows the transaction amount', function() {
+      BANKAPP.account.processTransaction(2000);
+      expect(BANKAPP.account.history[0].amount).to.equal(2000);
     });
 
   });
