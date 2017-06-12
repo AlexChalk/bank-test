@@ -1,33 +1,25 @@
-var chai = require('chai');
-var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
-var expect = chai.expect;
-chai.use(sinonChai);
+(function() {
+  'use strict';
 
-var BANKAPP = require('../init.js');
-
-var BANKAPP = {
-  init: function() { 
-    this.account = BANKAPP.createAccount(); 
-  },
-
-  createAccount: function() {
+  var createAccount = function() {
     var initialBalance = 0;
 
     return {
       history: [],
-      processTransaction: function(params) {
+      newTransaction: require('./transaction.js'),
+      processTransaction: function(amount) {
 
-        if (typeof params.amount !== 'number') {
+        if (typeof amount !== 'number') {
           throw { 
             name: 'TypeError',
             message: 'This function takes a number'
           };
         }
 
+        this.history.push(this.newTransaction(amount));
       }
     };
-  }
-};
+  };
+  module.exports = createAccount;
+}());
 
-module.exports = BANKAPP;
