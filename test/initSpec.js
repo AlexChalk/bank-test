@@ -14,21 +14,4 @@ describe('BANKAPP', function() {
       expect(BANKAPP.createAccount).to.have.been.calledOnce;
     });
   });
-
-  describe('processTransaction', function() {
-    beforeEach(function() {
-      BANKAPP.init();
-    });
-
-    it('errors if its param is not a number', function() {
-      expect(BANKAPP.account.processTransaction.bind(BANKAPP.account, 'elephant')).to.throw(/number/);
-    });
-
-
-    xit('populates account.history with a datestamped object', function() {
-    });
-
-  });
 });
-
-

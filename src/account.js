@@ -1,3 +1,9 @@
+var chai = require('chai');
+var sinon = require('sinon');
+var sinonChai = require('sinon-chai');
+var expect = chai.expect;
+chai.use(sinonChai);
+
 var BANKAPP = require('../init.js');
 
 var BANKAPP = {
@@ -10,9 +16,9 @@ var BANKAPP = {
 
     return {
       history: [],
-      processTransaction: function(amount) {
+      processTransaction: function(params) {
 
-        if (typeof amount !== 'number') {
+        if (typeof params.amount !== 'number') {
           throw { 
             name: 'TypeError',
             message: 'This function takes a number'
