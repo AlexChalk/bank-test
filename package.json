@@ -1,0 +1,17 @@
+{
+  "name": "bank-tech-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "init.js",
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "eslint": "^3.19.0",
+    "eslint-plugin-mocha": "^4.9.0",
+    "mocha": "^3.4.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "adc17",
+  "license": "ISC"
+}
