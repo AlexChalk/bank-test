@@ -2,9 +2,9 @@
   'use strict';
 
   var createAccount = function() {
-    var initialBalance = 0;
 
     return {
+      balance: 0,
       history: [],
       newTransaction: require('./transaction.js'),
       processTransaction: function(amount) {

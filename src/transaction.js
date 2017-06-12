@@ -2,9 +2,11 @@
   'use strict';
 
   var newTransaction = function(amount) {
+    this.balance += amount;
     return {
       timestamp:  Date.now,
-      amount:  amount
+      amount:  amount,
+      balance: this.balance
     };
   };
 
