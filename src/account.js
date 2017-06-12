@@ -10,7 +10,16 @@ var BANKAPP = {
 
     return {
       history: [],
-      processTransaction: function(paramsHash){}
+      processTransaction: function(amount) {
+
+        if (typeof amount !== 'number') {
+          throw { 
+            name: 'TypeError',
+            message: 'This function takes a number'
+          };
+        }
+
+      }
     };
   }
 };
