@@ -38,7 +38,7 @@ undefined
 ## Tests
 
 ```
-npm tests
+npm test
 ```
 
 ## Specification
